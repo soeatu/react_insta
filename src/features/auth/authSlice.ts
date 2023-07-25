@@ -5,6 +5,7 @@ import { PROPS_AUTHEN, PROPS_PROFILE, PROPS_NICKNAME } from "../types";
 
 const apiUrl = process.env.REACT_APP_DEV_API_URL;
 
+// 非同期でJWTトークンを取得
 export const fetchAsyncLogin = createAsyncThunk(
   "auth/post",
   async (authen: PROPS_AUTHEN) => {
@@ -17,6 +18,7 @@ export const fetchAsyncLogin = createAsyncThunk(
   }
 );
 
+//非同期で新規アカウントを作成
 export const fetchAsyncRegister = createAsyncThunk(
   "auth/register",
   async (auth: PROPS_AUTHEN) => {
@@ -29,6 +31,7 @@ export const fetchAsyncRegister = createAsyncThunk(
   }
 );
 
+// 非同期で新規プロフィールを作成
 export const fetchAsyncCreateProf = createAsyncThunk(
   "profile/post",
   async (nickName: PROPS_NICKNAME) => {
@@ -42,6 +45,7 @@ export const fetchAsyncCreateProf = createAsyncThunk(
   }
 );
 
+//　非同期でプロフィールを更新
 export const fetchAsyncUpdateProf = createAsyncThunk(
   "profile/put",
   async (profile: PROPS_PROFILE) => {
@@ -62,6 +66,7 @@ export const fetchAsyncUpdateProf = createAsyncThunk(
   }
 );
 
+// 非同期自身のプロフィールを取得
 export const fetchAsyncGetMyProf = createAsyncThunk("profile/get", async () => {
   const res = await axios.get(`${apiUrl}api/myprofile/`, {
     headers: {
@@ -71,6 +76,7 @@ export const fetchAsyncGetMyProf = createAsyncThunk("profile/get", async () => {
   return res.data[0];
 });
 
+// 非同期で存在するプロフィールを全て取得
 export const fetchAsyncGetProfs = createAsyncThunk("profiles/get", async () => {
   const res = await axios.get(`${apiUrl}api/profile/`, {
     headers: {
