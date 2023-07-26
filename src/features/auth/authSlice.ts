@@ -140,9 +140,10 @@ export const authSlice = createSlice({
       state.myprofile.nickName = action.payload;
     },
   },
+  // 正常終了した後の処理
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncLogin.fulfilled, (state, action) => {
-      localStorage.setItem("localJWT", action.payload.access);
+      localStorage.setItem("localJWT", action.payload.access);//sction.payloadはres.data
     });
     builder.addCase(fetchAsyncCreateProf.fulfilled, (state, action) => {
       state.myprofile = action.payload;
@@ -174,6 +175,7 @@ export const {
   editNickname,
 } = authSlice.actions;
 
+// useSelecterでstateを利用できるようにする
 export const selectIsLoadingAuth = (state: RootState) =>
   state.auth.isLoadingAuth;
 export const selectOpenSignIn = (state: RootState) => state.auth.openSignIn;
