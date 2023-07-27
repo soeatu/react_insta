@@ -78,7 +78,7 @@ const Auth: React.FC = () => {
             await dispatch(fetchCredEnd());
             await dispatch(resetOpenSignUp());
           }}
-        //   emailとpasswordのバリデーションを行う
+          //   emailとpasswordのバリデーションを行う
           validationSchema={Yup.object().shape({
             email: Yup.string()
               .email("email format is wrong")
@@ -245,6 +245,7 @@ const Auth: React.FC = () => {
                   <br />
                   <span
                     className={styles.auth_text}
+                    // モーダル切り替え
                     onClick={async () => {
                       await dispatch(resetOpenSignIn());
                       await dispatch(setOpenSignUp());
